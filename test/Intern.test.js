@@ -11,7 +11,7 @@ it('creates an Intern object', () => {
     const school = "unc-chapel hill"
 
 
-    const engineer = new Engineer(name, id, email, school);
+    const intern = new Intern(name, id, email, school);
     
     expect(intern.school) .toEqual(school);
 });
@@ -24,7 +24,7 @@ it('gets employee school', () => {
     const school = "unc-chapel hill"
 
 
-    const engineer = new Engineer(name, id, email, school);
+    const intern = new Intern(name, id, email, school);
     
     expect(intern.getSchool()).toEqual(school);
 });
@@ -37,7 +37,7 @@ it('gets role of employee', () => {
     const school = "unc-chapel hill"
 
 
-    const engineer = new Engineer(name, id, email, school);
+    const intern = new Intern(name, id, email, school);
 
     expect(intern.getRole()).toEqual("Intern");
 }); 
