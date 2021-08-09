@@ -7,11 +7,11 @@ describe("Manager class", () => {
     const name = "Qabas";
     const id = 1981;
     const email = "QabasDeveloper@gmail.com";
-    const number = 99;
+    const officeNumber = 99;
 
-    const Manager = new Manager(name, id, email, number);
+    const manager = new Manager(name, id, email, officeNumber);
 
-    expect(manager.officeNumber).toEqual(number);
+    expect(manager.officeNumber).toEqual(officeNumber);
   });
 
   // gets role from getRole method
@@ -19,9 +19,9 @@ describe("Manager class", () => {
     const name = "Qabas";
     const id = 1981;
     const email = "QabasDeveloper@gmail.com";
-    const number = 99;
+    const officeNumber = 99;
 
-    const Manager = new Manager(name, id, email, number);
+    const manager = new Manager(name, id, email, officeNumber);
 
     expect(manager.getRole()).toEqual("Manager");
   });
