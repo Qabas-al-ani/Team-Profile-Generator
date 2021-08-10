@@ -1,8 +1,8 @@
-// using Engineer constructor 
+//imports engineer class
 const Engineer = require('../lib/Engineer');
 
 describe("Employee class", () => {
-// creating engineer object  
+ 
 it('creates an Engineer object', () => {
     const name = "Qabas";
     const id = 1981;
@@ -15,7 +15,7 @@ it('creates an Engineer object', () => {
     expect(engineer.github) .toEqual(github);
 });
 
-// gets github from getGithub()
+// checks  engineer github 
 it('gets engineer github value', () => {
     const name = "Qabas";
     const id = 1981;
@@ -28,7 +28,7 @@ it('gets engineer github value', () => {
     expect(engineer.getGithub()).toEqual(github);
 });
 
-// gets role from getRole() 
+// checks if the employee has been in role
 it('gets role of employee', () => {
     const name = "Qabas";
     const id = 1981;

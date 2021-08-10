@@ -1,4 +1,4 @@
-// using Employee constructor
+// using Employee require
 const Employee = require("../lib/Employee");
 
 describe("Employee class", () => {
@@ -36,7 +36,7 @@ describe("Employee class", () => {
     expect(employee.getId()).toEqual(id);
   });
 
-  // gets emails from getEmail method
+  // checks email if it's right
   it("gets employee email", () => {
     const name = "Qabas";
     const id = 1981;
@@ -47,7 +47,7 @@ describe("Employee class", () => {
     expect(employee.getEmail()).toEqual(email);
   });
 
-  // gets role from getRole method
+  // checks if get role returns employee 
   it("gets role of employee", () => {
     const name = "Qabas";
     const id = 1981;

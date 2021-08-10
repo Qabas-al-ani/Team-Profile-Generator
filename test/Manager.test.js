@@ -1,8 +1,7 @@
-// Manager constructor
+// Manager requirer
 const Manager = require("../lib/Manager");
 
 describe("Manager class", () => {
-  // creates manager object
   it("creates an Manager object", () => {
     const name = "Qabas";
     const id = 1981;

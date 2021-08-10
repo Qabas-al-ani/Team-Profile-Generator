@@ -1,9 +1,8 @@
-// using Intern constructor 
+// using Intern require
 const Intern = require('../lib/Intern');
 
 
-describe("Intern class", () => {
-// creating intern object  
+describe("Intern class", () => { 
 it('creates an Intern object', () => {
     const name = "Qabas";
     const id = 1981;
@@ -16,7 +15,7 @@ it('creates an Intern object', () => {
     expect(intern.school) .toEqual(school);
 });
 
-// gets school from getSchool()
+// checks if the intern has been in school 
 it('gets employee school', () => {
     const name = "Qabas";
     const id = 1981;
@@ -29,7 +28,7 @@ it('gets employee school', () => {
     expect(intern.getSchool()).toEqual(school);
 });
 
-// gets role from getRole()
+// checks if the intern has been in role
 it('gets role of employee', () => {
     const name = "Qabas";
     const id = 1981;

@@ -1,41 +1,70 @@
-// link to the html page
+// using html require
 const generateHTML = require("./src/generateHTML");
 
-// team profiles
+// require for the whole team
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-// set up node modules
+// set up the libraries needed
 const fs = require("fs");
 const inquirer = require("inquirer");
 
-// create team array
+// create team array for later use
 const teamArray = [];
 
-// staring with manager inquirer prompts
-const addManager = () => {
+// set up the manager dependencies
+const addManagerElement = () => {
   return inquirer
     .prompt([
       {
         type: "input",
         name: "name",
-        message: "Who is the manager of this team?",
+        message: "please provide the manager's name?",
+        validate: (name) => {
+          if (name) {
+            return true;
+          }
+          console.log("Please provide the manager's name?");
+          return false;
+        },
       },
       {
         type: "input",
         name: "id",
-        message: "Please enter the manager's ID.",
+        message: "Please provide the manager's ID!",
+        validate: (idInput) => {
+          if (isNaN(idInput)) {
+            console.log("Please provide the manager's ID!");
+            return false;
+          }
+          return true;
+        },
       },
       {
         type: "input",
         name: "email",
-        message: "Please enter the manager's email.",
+        message: "Please can you enter the manager's email",
+        validate: (email) => {
+          valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+          if (valid) {
+            return true;
+          }
+          console.log("Please re correct the email!");
+          return false;
+        },
       },
       {
         type: "input",
         name: "officeNumber",
-        message: "Please enter the manager's office number",
+        message: "Please write manager's office number",
+        validate: (officeNumber) => {
+          if (isNaN(officeNumber)) {
+            console.log("Please write manager's office number!");
+            return false;
+          }
+          return true;
+        },
       },
     ])
     .then((managerInput) => {
@@ -43,49 +72,85 @@ const addManager = () => {
       const manager = new Manager(name, id, email, officeNumber);
 
       teamArray.push(manager);
-      console.log(manager);
     });
 };
 
-// adding employee section
-const addEmployee = () => {
+// creating adding employees
+const addEmployeeEL = () => {
   return inquirer
     .prompt([
       {
         type: "list",
         name: "role",
-        message: "Please choose your employee's role",
+        message: "Please pick your employee's role",
         choices: ["Engineer", "Intern"],
       },
       {
         type: "input",
         name: "name",
-        message: "What's the name of the employee?",
+        message: "What's your employee's name?",
+        validate: (name) => {
+          if (name) {
+            return true;
+          }
+          console.log("What's your employee's name?!");
+          return false;
+        },
       },
       {
         type: "input",
         name: "id",
-        message: "Please enter the employee's ID.",
+        message: "Please provide the employee's ID.",
+        validate: (idInput) => {
+          if (isNaN(idInput)) {
+            console.log("Please provide the employee's ID!");
+            return false;
+          }
+          return true;
+        },
       },
       {
         type: "input",
         name: "email",
-        message: "Please enter the employee's email.",
+        message: "Please write down the employee's email.",
+        validate: (email) => {
+          valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+          if (valid) {
+            return true;
+          }
+          console.log("Please write down the employee's email!");
+          return false;
+        },
       },
       {
         type: "input",
         name: "github",
-        message: "Please enter the employee's github username.",
+        message: "Please enter the employee's github username account.",
+        validate: (github) => {
+          if (github) {
+            return true;
+          }
+          console.log("Please enter the employee's github username!");
+          return false;
+        },
       },
       {
         type: "input",
         name: "school",
-        message: "Please enter the intern's school",
+        message: "Please enter the intern's school name.",
+        validate: (schoolName) => {
+          if (schoolName) {
+            return true;
+          }
+          console.log("Please enter the intern's school name!");
+          return false;
+        },
       },
       {
         type: "confirm",
         name: "confirmAddEmployee",
-        message: "Would you like to add more team members?",
+        message:
+          "if you want to add more team members to your list, please enter?",
         default: false,
       },
     ])
@@ -98,32 +163,28 @@ const addEmployee = () => {
 
       if (role === "Engineer") {
         employee = new Engineer(name, id, email, github);
-
-        console.log(employee);
       } else if (role === "Intern") {
         employee = new Intern(name, id, email, school);
-
-        console.log(employee);
       }
 
       teamArray.push(employee);
 
       if (confirmAddEmployee) {
-        return addEmployee(teamArray);
+        return addEmployeeEL(teamArray);
       } else {
         return teamArray;
       }
     });
 };
 
-// function to generate HTML page file using file system
+// function get the html down with the date in them
 const writeFile = (data) => {
   fs.writeFile("./dist/index.html", data, (err) => {
     // if there is an error
     if (err) {
       console.log(err);
       return;
-      // when the profile has been created
+      // when the profile has been created, the team leader get this message
     } else {
       console.log(
         "Your team profile has been successfully created! Please check out the index.html"
@@ -132,8 +193,8 @@ const writeFile = (data) => {
   });
 };
 
-addManager()
-  .then(addEmployee)
+addManagerElement()
+  .then(addEmployeeEL)
   .then((teamArray) => {
     return generateHTML(teamArray);
   })
