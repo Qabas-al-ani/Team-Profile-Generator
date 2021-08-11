@@ -127,9 +127,9 @@ const generateTeamPage = function (employeeCards) {
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
       ></script>
-      <link rel="shortcut icon" href="./images/favicon.png" type="image/png" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="shortcut icon" href="../images/favicon-(2).png" type="image/png">
       <link
         href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
         rel="stylesheet"
@@ -149,7 +149,7 @@ const generateTeamPage = function (employeeCards) {
   }
   
   </style>
-      <title>Weather Dashboard Api</title>
+    <title>Team Generator</title>
     </head>
     <body>
       
